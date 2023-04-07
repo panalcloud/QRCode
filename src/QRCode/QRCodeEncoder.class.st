@@ -521,13 +521,11 @@ QRCodeEncoder >> initializeCodewords [
 { #category : #encoding }
 QRCodeEncoder >> initializeEncoding [
 	| index |
-	string := code string.
-	
 	code eci ifNotNil: [ 
 		"If an ECI is specified, then use byte encoding."
 		code encoding: #byte.
 		^self ].
-	
+	string := code string.
 	string isEmpty ifTrue: [
 		code encoding: #numeric.
 		^self ].
